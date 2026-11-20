@@ -1,0 +1,12 @@
+{
+  "name": "simplex-tech-website",
+  "version": "1.0.0",
+  "description": "Official landing page for Simplex Tech - High Impact Software Engineering Agency",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  },
+  "keywords": ["agency", "landing-page", "simplex-tech", "software-development", "crm", "dashboard"],
+  "author": "Simplex Tech",
+  "license": "MIT"
+}

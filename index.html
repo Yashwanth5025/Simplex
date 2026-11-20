@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simplex Tech — Bespoke Business Software & Digital Engineering</title>
+  <meta name="description"
+    content="Simplex Tech builds custom CRMs, dashboards, analytics, high-converting landing pages, mobile MVPs, and business software. Delivered in days with full code ownership.">
+  <meta name="keywords"
+    content="Simplex Tech, software studio, CRM development, dashboard, analytics, landing page, custom software">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            zinc: {
+              50: '#fafafa',
+              100: '#f4f4f5',
+              200: '#e4e4e7',
+              300: '#d4d4d8',
+              400: '#a1a1aa',
+              500: '#71717a',
+              600: '#52525b',
+              700: '#3f3f46',
+              800: '#27272a',
+              900: '#18181b',
+              950: '#09090b',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#fbfbfb] text-zinc-950 antialiased selection:bg-zinc-950 selection:text-white">
+
+  <!-- Subtle Structural Grid Background -->
+  <div class="bg-grid-subtle"></div>
+
+  <!-- Background Canvas for Interactive Points -->
+  <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- ==================== PROMINENT, SPACIOUS NAVBAR ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 studio-navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div
+          class="w-11 h-11 rounded-xl bg-zinc-950 text-white flex items-center justify-center font-black text-lg shadow-sm group-hover:bg-zinc-800 transition-colors">
+          S
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight text-zinc-950 flex items-center gap-0.5">
+            simplex<span class="text-zinc-600 font-bold">tech</span>
+          </span>
+          <span class="text-[11px] tracking-widest text-zinc-400 uppercase font-mono font-semibold -mt-1">Software
+            Studio</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-[14px] font-semibold text-zinc-600">
+        <a href="#services" class="hover:text-zinc-950 transition-colors">Services</a>
+        <a href="#standards" class="hover:text-zinc-950 transition-colors">Why Simplex</a>
+        <a href="#demos" class="hover:text-zinc-950 transition-colors">Live Prototypes</a>
+        <a href="#estimator" class="hover:text-zinc-950 transition-colors">Scope Estimator</a>
+        <a href="#faq" class="hover:text-zinc-950 transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Prominent WhatsApp Action Button -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I'd%20like%20to%20discuss%20a%20software%20project%20for%20my%20business."
+          target="_blank" rel="noopener noreferrer"
+          class="btn-whatsapp-solid px-5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2.5">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+          </svg>
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-toggle" aria-label="Toggle Menu"
+        class="md:hidden p-2.5 text-zinc-900 rounded-lg hover:bg-zinc-100">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-nav-menu" class="hidden md:hidden bg-white border-b border-zinc-200 px-6 py-5 space-y-4 shadow-xl">
+      <a href="#services" class="mobile-nav-link block text-zinc-800 font-semibold text-base py-1">Services</a>
+      <a href="#standards" class="mobile-nav-link block text-zinc-800 font-semibold text-base py-1">Why Simplex</a>
+      <a href="#demos" class="mobile-nav-link block text-zinc-800 font-semibold text-base py-1">Live Prototypes</a>
+      <a href="#estimator" class="mobile-nav-link block text-zinc-800 font-semibold text-base py-1">Scope Estimator</a>
+      <a href="#faq" class="mobile-nav-link block text-zinc-800 font-semibold text-base py-1">FAQ</a>
+      <div class="pt-3 border-t border-zinc-100">
+        <a href="https://wa.me/918074215457" target="_blank"
+          class="btn-whatsapp-solid w-full py-3 rounded-xl font-bold text-center block text-sm">
+          WhatsApp: +91 8074215457
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Top Pill Badge -->
+      <div class="flex justify-center mb-6 reveal">
+        <div
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-800">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Bespoke Business Software Studio • Fast 3–7 Day Sprints</span>
+        </div>
+      </div>
+
+      <!-- Main Headline -->
+      <div class="text-center max-w-4xl mx-auto reveal">
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-950 leading-[1.14] mb-5">
+          We engineer high-performance software for growing businesses:
+          <span class="block text-zinc-800 mt-2 min-h-[1.25em]">
+            <span id="rotating-text">Custom CRMs & Business Portals</span>
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-zinc-600 max-w-2xl mx-auto mb-9 font-normal leading-relaxed">
+          From full-featured <strong class="text-zinc-900 font-semibold">CRMs, business dashboards, and real-time
+            analytics</strong> to <strong class="text-zinc-900 font-semibold">high-converting landing pages, MVP mobile
+            apps, and workflow bots</strong>. We engineer it all with velocity, clean code, and zero fluff.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-14">
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I'd%20like%20to%20discuss%20a%20software%20project%20for%20my%20business."
+            target="_blank" rel="noopener noreferrer"
+            class="btn-whatsapp-solid w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-base flex items-center justify-center gap-2.5">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            </svg>
+            <span>Message Us</span>
+          </a>
+
+          <a href="#estimator"
+            class="btn-ghost-outline w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-base flex items-center justify-center gap-2">
+            <span>Calculate Project Scope</span>
+            <svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Solid Metrics Bar -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto pt-7 border-t border-zinc-200">
+          <div class="p-2">
+            <div class="text-2xl font-black text-zinc-950 font-mono">3–7 Days</div>
+            <div class="text-xs text-zinc-500 font-semibold mt-0.5">Average Turnaround</div>
+          </div>
+          <div class="p-2">
+            <div class="text-2xl font-black text-zinc-950 font-mono stat-counter" data-target="15" data-suffix="m">0m
+            </div>
+            <div class="text-xs text-zinc-500 font-semibold mt-0.5">WhatsApp Response</div>
+          </div>
+          <div class="p-2">
+            <div class="text-2xl font-black text-zinc-950 font-mono stat-counter" data-target="100" data-suffix="%">0%
+            </div>
+            <div class="text-xs text-zinc-500 font-semibold mt-0.5">Full Code Handover</div>
+          </div>
+          <div class="p-2">
+            <div class="text-2xl font-black text-zinc-950 font-mono">Direct</div>
+            <div class="text-xs text-zinc-500 font-semibold mt-0.5">Engineer Line (No Sales Reps)</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== THE SIMPLEX STANDARD ==================== -->
+  <section id="standards" class="py-16 relative z-10 border-y border-zinc-200 bg-zinc-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500">Why Simplex Tech</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 mt-1">
+          Built For Velocity, Simplicity & Control
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="studio-card p-5 bg-white">
+          <div
+            class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center font-bold text-zinc-900 text-sm mb-3">
+            01
+          </div>
+          <h3 class="font-bold text-zinc-900 text-sm mb-1.5">Direct Engineer Line</h3>
+          <p class="text-xs text-zinc-600 leading-relaxed">
+            No account managers or bureaucratic middlemen. You communicate directly with the engineer building your tool
+            on WhatsApp.
+          </p>
+        </div>
+
+        <div class="studio-card p-5 bg-white">
+          <div
+            class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center font-bold text-zinc-900 text-sm mb-3">
+            02
+          </div>
+          <h3 class="font-bold text-zinc-900 text-sm mb-1.5">Agile Sprint Delivery</h3>
+          <p class="text-xs text-zinc-600 leading-relaxed">
+            Most custom projects are deployed within 3 to 7 days. You get working demo links weekly to test before
+            launch.
+          </p>
+        </div>
+
+        <div class="studio-card p-5 bg-white">
+          <div
+            class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center font-bold text-zinc-900 text-sm mb-3">
+            03
+          </div>
+          <h3 class="font-bold text-zinc-900 text-sm mb-1.5">100% Code Ownership</h3>
+          <p class="text-xs text-zinc-600 leading-relaxed">
+            Every file, repository, and database belongs to you. Zero ongoing agency lock-ins or hidden recurring
+            maintenance fees.
+          </p>
+        </div>
+
+        <div class="studio-card p-5 bg-white">
+          <div
+            class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center font-bold text-zinc-900 text-sm mb-3">
+            04
+          </div>
+          <h3 class="font-bold text-zinc-900 text-sm mb-1.5">Production Stacks</h3>
+          <p class="text-xs text-zinc-600 leading-relaxed">
+            Built with robust industry frameworks: Next.js, React, Node.js, Python, PostgreSQL, and modern cloud
+            deployment.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES SPECTRUM ==================== -->
+  <section id="services" class="py-20 relative z-10 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500">Core Services</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-zinc-950 mt-1 mb-2">
+          What We Can Build For You
+        </h2>
+        <p class="text-zinc-600 text-sm sm:text-base">
+          Every solution is engineered specifically around your workflow, data structure, and customers.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Service 1: Custom CRMs -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">01 / OPERATIONS</span>
+              <span class="price-tag-clean">From ₹2,999</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">Custom CRMs & ERPs</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Tailored lead tracking pipelines, team assignments, deal probability, and automated client notes built for
+              your business.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Lead Pipeline</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">User Roles</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Client History</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I'm%20interested%20in%20a%20Custom%20CRM."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Inquire for CRM</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Service 2: Dashboards -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">02 / TELEMETRY</span>
+              <span class="price-tag-clean">From ₹2,499</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">Dashboards & Analytics</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Live metric telemetry, revenue graphs, active customer counters, and one-click data export to keep
+              leadership aligned.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Live Charts</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Revenue KPIs</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">CSV Exports</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20want%20a%20Business%20Dashboard."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Inquire for Dashboard</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Service 3: High-Converting Landing Pages -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">03 / CONVERSION</span>
+              <span class="price-tag-clean">From ₹1,999</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">High-Converting Landing Pages</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Speed-engineered sales pages built to turn Google and Meta ads into verified WhatsApp inquiries and paying
+              customers.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">0.3s Load Time</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">WhatsApp CTA</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">SEO Ready</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20need%20a%20High-Converting%20Landing%20Page."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Inquire for Landing Page</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Service 4: Mobile & Web MVP Apps -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">04 / APPS</span>
+              <span class="price-tag-clean">From ₹3,499</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">Mobile & Web MVP Apps</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Cross-platform prototypes for startups and businesses with user registration, secure database storage, and
+              fluid UI.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">iOS & Android</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Auth & DB</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Rapid Prototype</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20want%20to%20build%20a%20Mobile%20or%20Web%20MVP."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Inquire for MVP App</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Service 5: WhatsApp Automations -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">05 / AUTOMATION</span>
+              <span class="price-tag-clean">From ₹1,999</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">WhatsApp Bots & Automations</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Automated customer auto-responders, instant dispatch alerts, invoice notifications, and multi-agent chat
+              assignment.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">WhatsApp API</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Instant Alerts</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Auto Routing</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20need%20a%20WhatsApp%20Bot%20or%20Automation."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Inquire for Automation</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Service 6: Company Intro Sites -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">06 / IDENTITY</span>
+              <span class="price-tag-clean">From ₹1,499</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">Company Intro Websites</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Crisp presentation websites to introduce your agency, firm, or practice to prospective clients and
+              establish authority.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Modern
+                Aesthetic</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Fluid
+                Responsive</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Quick Delivery</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I'd%20like%20a%20Company%20Intro%20Website."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Inquire for Intro Site</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Service 7: Storefronts & Catalogs -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">07 / STOREFRONTS</span>
+              <span class="price-tag-clean">From ₹2,999</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">Digital Catalogs & Storefronts</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Showcase inventory, take customer orders, and accept UPI / Razorpay payments with zero monthly marketplace
+              cut.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Razorpay / UPI</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Product Catalog</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">WhatsApp
+                Checkout</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I'd%20like%20a%20Storefront%20or%20Catalog%20site."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Inquire for Storefront</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Service 8: Internal Inventory & Staff Tools -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">08 / OPERATIONS</span>
+              <span class="price-tag-clean">From ₹2,999</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">Internal Staff & Inventory Tools</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Simple web apps to track warehouse inventory, equipment logbooks, employee check-ins, or order
+              preparation.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Stock Tracking</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Staff Portal</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Fast Search</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20need%20an%20Internal%20Staff%20or%20Inventory%20Tool."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Inquire for Operations Tool</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Service 9: Custom Bespoke Ideas -->
+        <div class="studio-card p-6 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-zinc-400">09 / BESPOKE</span>
+              <span class="price-tag-clean">Custom Quote</span>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">Bespoke Software Ideas</h3>
+            <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-4">
+              Have an idea that doesn't fit standard boxes? Explain your workflow to us in 5 minutes on WhatsApp and we
+              will map and build it.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Custom Logic</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Tailored
+                Architecture</span>
+              <span class="text-[11px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-medium">Direct WhatsApp</span>
+            </div>
+          </div>
+          <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20have%20a%20bespoke%20software%20idea%20to%20discuss."
+            target="_blank" class="text-xs font-bold text-zinc-900 hover:text-zinc-600 flex items-center gap-1.5">
+            <span>Discuss Custom Idea</span>
+            <span>→</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PREMIUM LIVE PROTOTYPES (OVERHAULED) ==================== -->
+  <section id="demos" class="py-24 relative z-10 border-t border-zinc-200 bg-zinc-50/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500">Interactive Studio Demos</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-zinc-950 mt-1 mb-2">
+          Experience What We Build
+        </h2>
+        <p class="text-zinc-600 text-xs sm:text-sm">
+          Click around to explore live, working software mockups we engineer for clients.
+        </p>
+      </div>
+
+      <!-- Segmented Pill Tab Controls (Sleek Linear/Apple Style) -->
+      <div class="flex justify-center mb-8 reveal">
+        <div class="prototype-segmented-control flex flex-wrap justify-center gap-1">
+          <button class="demo-tab-btn active" data-target="demo-crm">
+            💼 Commercial CRM & Pipeline
+          </button>
+          <button class="demo-tab-btn" data-target="demo-bi">
+            📈 Real-Time BI & Telemetry
+          </button>
+          <button class="demo-tab-btn" data-target="demo-landing">
+            ⚡ High-Speed Sales Funnel
+          </button>
+          <button class="demo-tab-btn" data-target="demo-ai">
+            🤖 AI Operations Copilot
+          </button>
+        </div>
+      </div>
+
+      <!-- Prototype Main Window -->
+      <div class="prototype-window reveal relative">
+
+        <!-- Window Top OS Bar -->
+        <div class="px-5 py-3.5 bg-zinc-100/90 border-b border-zinc-200 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-zinc-300 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-zinc-300 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-zinc-300 inline-block"></span>
+            <span
+              class="ml-3 text-xs font-mono text-zinc-500 bg-white px-3 py-1 rounded-md border border-zinc-200 flex items-center gap-2">
+              <svg class="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                  clip-rule="evenodd" />
+              </svg>
+              <span>https://app.simplextech.io/live-session</span>
+            </span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span
+              class="text-xs font-mono font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>LIVE INTERACTIVE PREVIEW</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- ==================== TAB 1: COMMERCIAL CRM ==================== -->
+        <div id="demo-crm" class="demo-panel">
+
+          <!-- App Header -->
+          <div
+            class="p-5 sm:p-6 bg-white border-b border-zinc-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-base sm:text-lg font-bold text-zinc-950">Commercial Deal Pipeline</h3>
+                <span class="text-[11px] font-mono bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-semibold">Q4
+                  Active</span>
+              </div>
+              <p class="text-xs text-zinc-500 mt-0.5">Click any deal card to inspect client notes, WhatsApp activity,
+                and stage.</p>
+            </div>
+
+            <div class="flex items-center gap-2.5 w-full sm:w-auto">
+              <div
+                class="text-xs font-mono font-bold bg-zinc-100 text-zinc-900 px-3 py-1.5 rounded-lg border border-zinc-200">
+                Pipeline Value: ₹16,35,000
+              </div>
+              <button class="text-xs font-bold btn-dark px-3.5 py-1.5 rounded-lg whitespace-nowrap"
+                onclick="alert('In production, this opens your customized New Lead modal connected to WhatsApp.')">
+                + Add Deal
+              </button>
+            </div>
+          </div>
+
+          <!-- Kanban Columns -->
+          <div class="p-5 sm:p-6 bg-zinc-50/70 overflow-x-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 min-w-[700px]">
+
+              <!-- Column 1: Qualified Leads -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between pb-2 border-b border-zinc-200">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-zinc-400"></span>
+                    <span class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Qualified Leads</span>
+                  </div>
+                  <span
+                    class="text-xs font-mono font-bold text-zinc-500 bg-white px-2 py-0.5 rounded border border-zinc-200">3</span>
+                </div>
+
+                <div class="kanban-card" data-client="Titan Supply ERP" data-amount="₹4,20,000"
+                  data-stage="Qualified Inbound" data-scope="Custom multi-warehouse inventory ERP with barcode scanner">
+                  <div class="flex justify-between items-start mb-1.5">
+                    <span class="text-xs font-bold text-zinc-950">Titan Supply ERP</span>
+                    <span
+                      class="text-xs font-mono font-bold text-zinc-900 bg-zinc-100 px-2 py-0.5 rounded">₹4,20,000</span>
+                  </div>
+                  <p class="text-[11px] text-zinc-500 leading-snug mb-3">5 warehouse locations • High urgency</p>
+                  <div
+                    class="flex items-center justify-between pt-2 border-t border-zinc-100 text-[10px] text-zinc-400 font-mono">
+                    <span class="text-emerald-600 font-semibold">● WhatsApp Inbound</span>
+                    <span>2h ago</span>
+                  </div>
+                </div>
+
+                <div class="kanban-card" data-client="HealthHub Patient Portal" data-amount="₹1,85,000"
+                  data-stage="Qualified Inbound"
+                  data-scope="Doctor scheduling portal with automated SMS/WhatsApp reminders">
+                  <div class="flex justify-between items-start mb-1.5">
+                    <span class="text-xs font-bold text-zinc-950">HealthHub Portal</span>
+                    <span
+                      class="text-xs font-mono font-bold text-zinc-900 bg-zinc-100 px-2 py-0.5 rounded">₹1,85,000</span>
+                  </div>
+                  <p class="text-[11px] text-zinc-500 leading-snug mb-3">12 clinic branches • Booking sync</p>
+                  <div
+                    class="flex items-center justify-between pt-2 border-t border-zinc-100 text-[10px] text-zinc-400 font-mono">
+                    <span>Direct Referral</span>
+                    <span>Yesterday</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Column 2: Proposal Sent -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between pb-2 border-b border-zinc-200">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <span class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Proposal Review</span>
+                  </div>
+                  <span
+                    class="text-xs font-mono font-bold text-zinc-500 bg-white px-2 py-0.5 rounded border border-zinc-200">2</span>
+                </div>
+
+                <div class="kanban-card" data-client="Apex Logistics SaaS" data-amount="₹6,50,000"
+                  data-stage="Proposal Sent" data-scope="Fleet telemetry dashboard, driver shift log & GST billing">
+                  <div class="flex justify-between items-start mb-1.5">
+                    <span class="text-xs font-bold text-zinc-950">Apex Logistics SaaS</span>
+                    <span
+                      class="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">₹6,50,000</span>
+                  </div>
+                  <p class="text-[11px] text-zinc-500 leading-snug mb-3">Fleet tracking + driver mobile app</p>
+                  <div
+                    class="flex items-center justify-between pt-2 border-t border-zinc-100 text-[10px] text-zinc-400 font-mono">
+                    <span class="text-amber-600 font-semibold">● Contract Sent</span>
+                    <span>3d ago</span>
+                  </div>
+                </div>
+
+                <div class="kanban-card" data-client="Aura Jewelry Storefront" data-amount="₹3,80,000"
+                  data-stage="Proposal Sent"
+                  data-scope="Custom luxury e-commerce catalog with Razorpay payments and WhatsApp invoices">
+                  <div class="flex justify-between items-start mb-1.5">
+                    <span class="text-xs font-bold text-zinc-950">Aura Luxury Storefront</span>
+                    <span
+                      class="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">₹3,80,000</span>
+                  </div>
+                  <p class="text-[11px] text-zinc-500 leading-snug mb-3">Razorpay + WhatsApp invoice generation</p>
+                  <div
+                    class="flex items-center justify-between pt-2 border-t border-zinc-100 text-[10px] text-zinc-400 font-mono">
+                    <span>Negotiation</span>
+                    <span>4d ago</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Column 3: Live in Production -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between pb-2 border-b border-zinc-200">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Won / In Production</span>
+                  </div>
+                  <span
+                    class="text-xs font-mono font-bold text-zinc-500 bg-white px-2 py-0.5 rounded border border-zinc-200">1</span>
+                </div>
+
+                <div class="kanban-card border-emerald-200 bg-white" data-client="RapidFleet Analytics"
+                  data-amount="₹5,20,000" data-stage="Active Sprint"
+                  data-scope="Live GPS telemetry dashboard & driver dispatch queue">
+                  <div class="flex justify-between items-start mb-1.5">
+                    <span class="text-xs font-bold text-zinc-950">RapidFleet Analytics</span>
+                    <span
+                      class="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">₹5,20,000</span>
+                  </div>
+                  <div class="w-full bg-zinc-100 h-1.5 rounded-full overflow-hidden my-2">
+                    <div class="bg-emerald-600 h-full w-4/5"></div>
+                  </div>
+                  <p class="text-[11px] text-zinc-500">Sprint 3 of 4: QA & Payment Testing</p>
+                  <div
+                    class="flex items-center justify-between pt-2 border-t border-zinc-100 text-[10px] text-zinc-400 font-mono mt-2">
+                    <span class="text-emerald-600 font-semibold">● On Schedule</span>
+                    <span>Deploy Friday</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Slide-Out Deal Drawer Modal -->
+          <div id="crm-deal-drawer" class="hidden p-5 bg-white border-t border-zinc-200">
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-100">
+              <div>
+                <span class="text-[10px] font-mono uppercase text-zinc-400 font-bold">Deal Inspector</span>
+                <h4 id="drawer-client-name" class="text-base font-bold text-zinc-950">Titan Supply ERP</h4>
+              </div>
+              <div class="flex items-center gap-3">
+                <span id="drawer-deal-amount"
+                  class="text-sm font-mono font-black text-zinc-900 bg-zinc-100 px-2.5 py-1 rounded">₹4,20,000</span>
+                <button id="close-crm-drawer" class="text-xs font-bold text-zinc-500 hover:text-zinc-900 p-1">✕</button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs">
+              <div>
+                <span class="text-zinc-400 font-medium block">Current Stage:</span>
+                <span id="drawer-deal-stage" class="font-bold text-zinc-900 mt-0.5 block">Qualified Inbound</span>
+              </div>
+              <div class="sm:col-span-2">
+                <span class="text-zinc-400 font-medium block">Scope Description:</span>
+                <span id="drawer-deal-scope" class="text-zinc-700 mt-0.5 block">Custom multi-warehouse inventory ERP
+                  with barcode scanner</span>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-zinc-100 flex items-center justify-between">
+              <span class="text-[11px] text-zinc-500">Connected to WhatsApp Channel (+91 8074215457)</span>
+              <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I'd%20like%20to%20build%20a%20CRM%20like%20your%20live%20demo."
+                target="_blank" class="btn-whatsapp-solid text-xs font-bold px-3 py-1.5 rounded-lg">
+                Discuss Building This
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ==================== TAB 2: BUSINESS DASHBOARD & TELEMETRY ==================== -->
+        <div id="demo-bi" class="demo-panel hidden p-5 sm:p-7 bg-white">
+
+          <!-- Top Telemetry Toolbar -->
+          <div
+            class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-zinc-200">
+            <div>
+              <h3 class="text-lg font-bold text-zinc-950">Real-Time Business Intelligence & Revenue Suite</h3>
+              <p class="text-xs text-zinc-500 mt-0.5">Interactive live data stream with date-based toggles and order
+                telemetry.</p>
+            </div>
+
+            <!-- Timeframe Filter Toggles -->
+            <div class="flex items-center gap-1.5 bg-zinc-100 p-1 rounded-lg border border-zinc-200">
+              <button
+                class="dashboard-tf-btn px-2.5 py-1 text-xs font-bold rounded-md bg-zinc-100 text-zinc-600 hover:text-zinc-950"
+                data-tf="7D">7D</button>
+              <button class="dashboard-tf-btn px-2.5 py-1 text-xs font-bold rounded-md bg-zinc-950 text-white"
+                data-tf="30D">30D</button>
+              <button
+                class="dashboard-tf-btn px-2.5 py-1 text-xs font-bold rounded-md bg-zinc-100 text-zinc-600 hover:text-zinc-950"
+                data-tf="90D">90D</button>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+            <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
+              <span class="text-xs text-zinc-500 font-medium block">Total Revenue</span>
+              <div id="dash-gross-rev" class="text-2xl font-black text-zinc-950 font-mono mt-1">₹4,82,000</div>
+              <span class="text-[11px] text-emerald-600 font-mono font-bold">↑ +24.2% vs last period</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
+              <span class="text-xs text-zinc-500 font-medium block">Orders Fulfilled</span>
+              <div id="dash-orders-count" class="text-2xl font-black text-zinc-950 font-mono mt-1">142</div>
+              <span class="text-[11px] text-emerald-600 font-mono font-bold">99.8% Success rate</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
+              <span class="text-xs text-zinc-500 font-medium block">WhatsApp Inquiries</span>
+              <div class="text-2xl font-black text-zinc-950 font-mono mt-1">89</div>
+              <span class="text-[11px] text-zinc-700 font-mono font-semibold">15m Avg Reply</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
+              <span class="text-xs text-zinc-500 font-medium block">Server Response</span>
+              <div class="text-2xl font-black text-emerald-600 font-mono mt-1">0.24s</div>
+              <span class="text-[11px] text-zinc-500 font-mono">Edge CDN cached</span>
+            </div>
+          </div>
+
+          <!-- Interactive Chart Box -->
+          <div class="p-5 rounded-xl bg-zinc-50 border border-zinc-200 relative mb-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs font-bold text-zinc-800">Revenue Velocity Curve</span>
+              <span class="text-[11px] font-mono text-zinc-500">Hover nodes to inspect daily sales</span>
+            </div>
+
+            <!-- Floating Hover Tooltip -->
+            <div id="chart-interactive-tooltip"
+              class="hidden absolute z-20 bg-zinc-950 text-white text-[11px] font-mono px-3 py-1.5 rounded-lg shadow-xl pointer-events-none">
+              Day 12: ₹42,000
+            </div>
+
+            <!-- SVG Vector Chart with interactive hover points -->
+            <svg class="w-full h-40" viewBox="0 0 720 160" fill="none">
+              <defs>
+                <linearGradient id="chartShade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#09090b" stop-opacity="0.12" />
+                  <stop offset="100%" stop-color="#09090b" stop-opacity="0.0" />
+                </linearGradient>
+              </defs>
+              <path id="dash-chart-fill" d="M0,120 Q120,60 240,90 T480,45 T720,15 L720,160 L0,160 Z"
+                fill="url(#chartShade)" />
+              <path id="dash-chart-path" d="M0,120 Q120,60 240,90 T480,45 T720,15" stroke="#09090b" stroke-width="2.5"
+                fill="none" />
+
+              <!-- Interactive Node Points -->
+              <circle class="chart-node-point" cx="120" cy="75" r="4" fill="#52525b" data-val="₹32,400"
+                data-day="Day 5" />
+              <circle class="chart-node-point" cx="240" cy="90" r="4" fill="#52525b" data-val="₹41,200"
+                data-day="Day 10" />
+              <circle class="chart-node-point" cx="360" cy="55" r="4" fill="#52525b" data-val="₹68,900"
+                data-day="Day 15" />
+              <circle class="chart-node-point" cx="480" cy="45" r="4" fill="#52525b" data-val="₹84,100"
+                data-day="Day 20" />
+              <circle class="chart-node-point" cx="600" cy="28" r="4" fill="#52525b" data-val="₹1,12,000"
+                data-day="Day 25" />
+              <circle class="chart-node-point" cx="720" cy="15" r="5" fill="#09090b" data-val="₹1,44,400"
+                data-day="Day 30" />
+            </svg>
+          </div>
+
+          <!-- Recent Transactions Sub-Table -->
+          <div class="border border-zinc-200 rounded-xl overflow-hidden">
+            <div class="px-4 py-3 bg-zinc-100 text-xs font-bold text-zinc-800 flex justify-between items-center">
+              <span>Recent Ledger Records</span>
+              <span class="text-[11px] font-mono text-zinc-500">Updated in real-time</span>
+            </div>
+            <div class="divide-y divide-zinc-100 text-xs">
+              <div class="px-4 py-2.5 flex justify-between items-center bg-white hover:bg-zinc-50">
+                <span class="font-bold text-zinc-900">Dr. Sharma Dental Portal</span>
+                <span class="text-zinc-500 font-mono">Invoice #8821</span>
+                <span class="font-mono font-bold text-zinc-900">₹45,000</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-mono text-[10px] font-bold">Paid
+                  via UPI</span>
+              </div>
+              <div class="px-4 py-2.5 flex justify-between items-center bg-white hover:bg-zinc-50">
+                <span class="font-bold text-zinc-900">Elite Fitness Membership API</span>
+                <span class="text-zinc-500 font-mono">Invoice #8820</span>
+                <span class="font-mono font-bold text-zinc-900">₹28,500</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-mono text-[10px] font-bold">Paid
+                  via Razorpay</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ==================== TAB 3: HIGH-SPEED SALES FUNNEL ==================== -->
+        <div id="demo-landing" class="demo-panel hidden p-5 sm:p-8 bg-zinc-100/50">
+
+          <!-- Viewport Controller -->
+          <div class="flex justify-between items-center pb-4 mb-4 border-b border-zinc-200">
+            <div>
+              <span class="text-xs font-bold text-zinc-900">Responsive Sales Funnel Simulator</span>
+              <p class="text-[11px] text-zinc-500">Toggle desktop vs mobile viewport to see high-speed responsiveness.
+              </p>
+            </div>
+            <div class="flex items-center gap-1.5 bg-white p-1 rounded-lg border border-zinc-200">
+              <button class="device-switch-btn px-3 py-1 text-xs font-bold rounded-md bg-zinc-950 text-white"
+                data-device="desktop">Desktop</button>
+              <button
+                class="device-switch-btn px-3 py-1 text-xs font-bold rounded-md bg-zinc-100 text-zinc-600 hover:text-zinc-950"
+                data-device="mobile">📱 Mobile</button>
+            </div>
+          </div>
+
+          <!-- Simulated Landing Page Container -->
+          <div id="landing-viewport-frame"
+            class="mx-auto transition-all duration-300 bg-white rounded-xl border border-zinc-200 shadow-sm p-6 sm:p-10 text-center">
+
+            <span
+              class="text-[10px] font-mono font-bold uppercase tracking-wider bg-zinc-100 border border-zinc-200 px-2.5 py-1 rounded">Sub-Second
+              Load Time Guaranteed</span>
+            <h3 class="text-xl sm:text-3xl font-extrabold text-zinc-950 mt-3 mb-2">Turn Cold Ad Traffic Into Direct
+              Paying Clients</h3>
+            <p class="text-xs sm:text-sm text-zinc-600 max-w-lg mx-auto mb-6 leading-relaxed">
+              Designed with conversion hierarchy: fast headlines, zero layout shift, customer proof, and instant
+              WhatsApp inquiry capture.
+            </p>
+
+            <!-- Working Interactive Lead Box -->
+            <div class="max-w-md mx-auto p-4 rounded-xl bg-zinc-50 border border-zinc-200 text-left mb-4">
+              <label class="block text-[11px] font-bold text-zinc-700 uppercase mb-1">Test Live WhatsApp Lead
+                Capture</label>
+              <div class="flex gap-2">
+                <input id="mock-lead-name" type="text" placeholder="Enter test customer name..." value="Rohan Verma"
+                  class="w-full text-xs px-3 py-2 rounded-lg border border-zinc-300 bg-white text-zinc-900 focus:outline-none focus:border-zinc-950">
+                <button id="mock-lead-submit"
+                  class="btn-whatsapp-solid px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap">
+                  Test CTA
+                </button>
+              </div>
+              <div id="mock-lead-success-alert"
+                class="hidden mt-2 p-2 rounded bg-emerald-50 text-emerald-800 text-[11px] font-medium border border-emerald-200">
+                ✓ Lead captured in 0.2s!
+              </div>
+            </div>
+
+            <div class="text-[11px] text-zinc-400 font-mono">
+              ⚡ Lighthouse 99 Performance • Tested on 3G/4G/5G networks
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ==================== TAB 4: AI OPERATIONS COPILOT ==================== -->
+        <div id="demo-ai" class="demo-panel hidden p-5 sm:p-7 bg-white">
+          <div class="flex justify-between items-center pb-4 mb-4 border-b border-zinc-200">
+            <div>
+              <h4 class="text-base font-bold text-zinc-950">Custom Business AI Copilot</h4>
+              <p class="text-xs text-zinc-500">Trained on internal documents, inventory catalogues & sales pipelines.
+              </p>
+            </div>
+            <span class="text-xs font-mono font-bold text-zinc-700 bg-zinc-100 px-2.5 py-1 rounded">RAG Enabled</span>
+          </div>
+
+          <!-- Prompt Preset Chips -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <button
+              class="ai-prompt-chip text-xs bg-zinc-100 hover:bg-zinc-200 text-zinc-800 px-3 py-1.5 rounded-lg border border-zinc-200 transition-colors"
+              data-response="Here is today's summary: 14 completed deliveries, ₹84,200 collected via UPI, and 3 high-priority leads waiting in WhatsApp pipeline.">
+              📊 "Summarize today's sales & pipeline"
+            </button>
+            <button
+              class="ai-prompt-chip text-xs bg-zinc-100 hover:bg-zinc-200 text-zinc-800 px-3 py-1.5 rounded-lg border border-zinc-200 transition-colors"
+              data-response="Found 2 overdue invoices: Apex Hardware (₹45,000 due 2 days ago) and Titan Logistics (₹22,000 due yesterday). I have generated 1-click WhatsApp payment reminders with UPI links.">
+              ⚡ "Check overdue invoices & draft reminders"
+            </button>
+            <button
+              class="ai-prompt-chip text-xs bg-zinc-100 hover:bg-zinc-200 text-zinc-800 px-3 py-1.5 rounded-lg border border-zinc-200 transition-colors"
+              data-response="SKU-8821 (Heavy Duty Bearing) currently has 42 units in Bangalore Warehouse and 18 in Mumbai. Reorder threshold is 20 units.">
+              📦 "Check inventory status for SKU-8821"
+            </button>
+          </div>
+
+          <!-- Chat Window Box -->
+          <div id="ai-chat-messages"
+            class="h-64 overflow-y-auto p-4 rounded-xl bg-zinc-50 border border-zinc-200 space-y-3">
+            <div class="flex justify-start">
+              <div
+                class="bg-zinc-100 text-zinc-900 border border-zinc-200 text-xs p-3.5 rounded-xl rounded-tl-none max-w-md">
+                <span class="inline-block text-[10px] font-mono text-zinc-500 uppercase font-semibold">Simplex AI
+                  Copilot</span>
+                <p class="leading-relaxed mt-1">Hello! I'm your custom business AI assistant. Click any prompt above or
+                  type your operational questions to see how I connect to your database in real time.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ESTIMATOR SECTION ==================== -->
+  <section id="estimator" class="py-20 relative z-10 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500">Interactive Scope
+          Planner</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-zinc-950 mt-2 mb-2">
+          Calculate Your Project Price
+        </h2>
+        <p class="text-zinc-600 text-xs sm:text-sm">
+          Select what you need to calculate an instant budget estimation and message us directly on WhatsApp.
+        </p>
+      </div>
+
+      <div class="studio-card p-6 sm:p-8 border border-zinc-300 reveal shadow-sm">
+
+        <!-- Step 1: Solution Choice -->
+        <div class="mb-8">
+          <label class="block text-xs font-mono uppercase tracking-wider text-zinc-700 font-bold mb-3">
+            1. Select Software Type
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+
+            <div
+              class="estimator-service-option active p-3 rounded-lg border border-zinc-950 bg-zinc-100 cursor-pointer"
+              data-name="Custom CRM / Business Portal" data-base-price="3999">
+              <div class="font-bold text-zinc-900 text-xs">Custom CRM / Portal</div>
+              <div class="text-[11px] text-zinc-500">Pipeline & records</div>
+            </div>
+
+            <div class="estimator-service-option p-3 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer"
+              data-name="Business Dashboard & Analytics" data-base-price="3299">
+              <div class="font-bold text-zinc-900 text-xs">Dashboard & Analytics</div>
+              <div class="text-[11px] text-zinc-500">Metrics & live KPIs</div>
+            </div>
+
+            <div class="estimator-service-option p-3 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer"
+              data-name="High-Converting Landing Page" data-base-price="1999">
+              <div class="font-bold text-zinc-900 text-xs">Landing Page</div>
+              <div class="text-[11px] text-zinc-500">Sub-second sales page</div>
+            </div>
+
+            <div class="estimator-service-option p-3 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer"
+              data-name="Company Intro Website" data-base-price="1499">
+              <div class="font-bold text-zinc-900 text-xs">Company Intro Site</div>
+              <div class="text-[11px] text-zinc-500">Services & contact profile</div>
+            </div>
+
+            <div class="estimator-service-option p-3 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer"
+              data-name="Mobile / Web App MVP" data-base-price="4499">
+              <div class="font-bold text-zinc-900 text-xs">Mobile / Web App MVP</div>
+              <div class="text-[11px] text-zinc-500">Cross-platform prototype</div>
+            </div>
+
+            <div class="estimator-service-option p-3 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer"
+              data-name="WhatsApp Bot & Automation" data-base-price="2499">
+              <div class="font-bold text-zinc-900 text-xs">WhatsApp Bot / Auto</div>
+              <div class="text-[11px] text-zinc-500">Automated replies & alerts</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Step 2: Add-Ons -->
+        <div class="mb-8">
+          <label class="block text-xs font-mono uppercase tracking-wider text-zinc-700 font-bold mb-3">
+            2. Add Key Modules
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+
+            <label
+              class="flex items-center gap-2.5 p-2.5 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer text-xs">
+              <input type="checkbox" checked
+                class="estimator-feature-checkbox w-4 h-4 text-zinc-950 rounded border-zinc-300 focus:ring-0"
+                data-name="User Accounts & Roles" data-price="500">
+              <span class="font-medium text-zinc-800">User Login & Role Permissions</span>
+            </label>
+
+            <label
+              class="flex items-center gap-2.5 p-2.5 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer text-xs">
+              <input type="checkbox" checked
+                class="estimator-feature-checkbox w-4 h-4 text-zinc-950 rounded border-zinc-300 focus:ring-0"
+                data-name="Real-Time Analytics & Charts" data-price="500">
+              <span class="font-medium text-zinc-800">Interactive Visual Analytics & Charts</span>
+            </label>
+
+            <label
+              class="flex items-center gap-2.5 p-2.5 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer text-xs">
+              <input type="checkbox"
+                class="estimator-feature-checkbox w-4 h-4 text-zinc-950 rounded border-zinc-300 focus:ring-0"
+                data-name="WhatsApp Notification API" data-price="400">
+              <span class="font-medium text-zinc-800">WhatsApp Notification Integration</span>
+            </label>
+
+            <label
+              class="flex items-center gap-2.5 p-2.5 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer text-xs">
+              <input type="checkbox"
+                class="estimator-feature-checkbox w-4 h-4 text-zinc-950 rounded border-zinc-300 focus:ring-0"
+                data-name="Payment Gateway Integration" data-price="600">
+              <span class="font-medium text-zinc-800">Razorpay / UPI Payment Checkout</span>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Step 3: Turnaround speed -->
+        <div class="mb-8">
+          <label class="block text-xs font-mono uppercase tracking-wider text-zinc-700 font-bold mb-3">
+            3. Turnaround Pace
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+
+            <label
+              class="flex items-center justify-between p-2.5 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer text-xs">
+              <div class="flex items-center gap-2">
+                <input type="radio" name="timeline" class="estimator-timeline-radio text-zinc-950"
+                  data-name="Standard Delivery (5-7 Days)" data-multiplier="1.0" data-eta="5-7 Days" checked>
+                <span class="font-medium text-zinc-800">Standard Delivery</span>
+              </div>
+              <span class="font-mono text-zinc-500 font-semibold">5-7 Days</span>
+            </label>
+
+            <label
+              class="flex items-center justify-between p-2.5 rounded-lg border border-zinc-200 bg-zinc-50/50 cursor-pointer text-xs">
+              <div class="flex items-center gap-2">
+                <input type="radio" name="timeline" class="estimator-timeline-radio text-zinc-950"
+                  data-name="Express Rapid Sprint (48-72 Hours)" data-multiplier="1.15" data-eta="48-72 Hours">
+                <span class="font-medium text-zinc-800">⚡ Express Sprint</span>
+              </div>
+              <span class="font-mono text-zinc-800 font-bold">48-72 Hours</span>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div
+          class="p-5 rounded-xl bg-zinc-100 border border-zinc-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <div class="text-[11px] font-mono uppercase text-zinc-500 font-bold">Estimated Project Investment</div>
+            <div id="estimator-price-range" class="text-2xl sm:text-3xl font-black text-zinc-950 font-mono mt-0.5">
+              ₹4,600 - ₹5,600
+            </div>
+            <div class="text-xs text-zinc-600 mt-1">
+              Estimated Time: <strong id="estimator-duration" class="text-zinc-900 font-semibold">5-7 Days</strong> •
+              Includes Post-Launch QA
+            </div>
+          </div>
+
+          <a id="estimator-whatsapp-cta"
+            href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I'd%20like%20to%20discuss%20my%20software%20project%20scope."
+            target="_blank" rel="noopener noreferrer"
+            class="btn-whatsapp-solid w-full sm:w-auto px-5 py-3 rounded-lg font-bold text-xs sm:text-sm flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            </svg>
+            <span>Send Scope to WhatsApp</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section id="faq" class="py-20 relative z-10 border-t border-zinc-200 bg-zinc-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-12 reveal">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500">FAQ</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 mt-1 mb-2">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-zinc-600 text-xs sm:text-sm">Direct answers about timelines, scope, and process.</p>
+      </div>
+
+      <div class="space-y-3 reveal">
+
+        <div class="faq-item studio-card overflow-hidden">
+          <button
+            class="faq-header w-full px-5 py-4 text-left flex items-center justify-between text-sm sm:text-base font-bold text-zinc-950">
+            <span>What type of software does Simplex Tech build?</span>
+            <svg class="faq-icon w-4 h-4 text-zinc-500 transition-transform" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            class="faq-content hidden px-5 pb-4 text-zinc-600 text-xs sm:text-sm border-t border-zinc-100 pt-3 leading-relaxed">
+            We build custom CRMs, internal staff portals, business analytics dashboards, cross-platform mobile app MVPs
+            (iOS & Android), automated WhatsApp bots, storefronts with payment checkouts, and high-converting landing
+            pages.
+          </div>
+        </div>
+
+        <div class="faq-item studio-card overflow-hidden">
+          <button
+            class="faq-header w-full px-5 py-4 text-left flex items-center justify-between text-sm sm:text-base font-bold text-zinc-950">
+            <span>Do I receive full code ownership?</span>
+            <svg class="faq-icon w-4 h-4 text-zinc-500 transition-transform" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            class="faq-content hidden px-5 pb-4 text-zinc-600 text-xs sm:text-sm border-t border-zinc-100 pt-3 leading-relaxed">
+            Yes, 100%. All source code, Git repositories, deployment configurations, and database credentials are fully
+            transferred to you. No ongoing retainer or vendor lock-in.
+          </div>
+        </div>
+
+        <div class="faq-item studio-card overflow-hidden">
+          <button
+            class="faq-header w-full px-5 py-4 text-left flex items-center justify-between text-sm sm:text-base font-bold text-zinc-950">
+            <span>How does the communication process work?</span>
+            <svg class="faq-icon w-4 h-4 text-zinc-500 transition-transform" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            class="faq-content hidden px-5 pb-4 text-zinc-600 text-xs sm:text-sm border-t border-zinc-100 pt-3 leading-relaxed">
+            You communicate directly with our engineers via WhatsApp (+91 8074215457). You receive regular sprint
+            milestone updates and staging URLs to test features as they are built.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FINAL CTA BANNER ==================== -->
+  <section class="py-16 relative z-10 border-t border-zinc-200 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+      <div class="studio-card p-8 sm:p-12 bg-zinc-950 text-white border-0">
+        <span class="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider block mb-3">GET IT BUILT</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold mb-3">Ready to build your business software?</h2>
+        <p class="text-zinc-400 text-sm max-w-lg mx-auto mb-6">
+          CRMs, dashboards, landing pages, or custom tools. Chat directly with the founder on WhatsApp.
+        </p>
+
+        <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I'd%20like%20to%20discuss%20a%20software%20project%20for%20my%20business."
+          target="_blank"
+          class="btn-whatsapp-solid px-6 py-3.5 rounded-xl font-bold text-sm inline-flex items-center gap-2">
+          <span>Chat on WhatsApp: +91 8074215457</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-10 relative z-10 border-t border-zinc-200 bg-white text-xs text-zinc-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-zinc-900">simplextech</span>
+        <span>•</span>
+        <span>Independent Software Studio</span>
+        <span>•</span>
+        <span>Bespoke Engineering</span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="#services" class="hover:text-zinc-900">Services</a>
+        <a href="#standards" class="hover:text-zinc-900">Why Simplex</a>
+        <a href="#estimator" class="hover:text-zinc-900">Scope Estimator</a>
+        <a href="#faq" class="hover:text-zinc-900">FAQ</a>
+        <a href="https://wa.me/918074215457" target="_blank"
+          class="text-emerald-600 font-semibold hover:underline">WhatsApp: +91 8074215457</a>
+      </div>
+
+      <div class="font-mono">
+        © 2026 Simplex Tech.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+  <div class="floating-whatsapp">
+
+    <!-- Expandable WhatsApp Box -->
+    <div id="whatsapp-popup" class="whatsapp-popup-box hidden p-4 text-left mb-2">
+      <div class="flex items-center justify-between pb-2.5 border-b border-zinc-100">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-[#25d366] text-white flex items-center justify-center font-bold text-xs">
+            ST
+          </div>
+          <div>
+            <div class="text-xs font-bold text-zinc-900">Simplex Tech</div>
+            <div class="text-[10px] text-zinc-500 font-mono">Online • Rapid Sprints</div>
+          </div>
+        </div>
+        <button id="whatsapp-popup-close" class="text-zinc-400 hover:text-zinc-700 text-xs p-1">✕</button>
+      </div>
+
+      <p class="text-xs text-zinc-600 mt-2 mb-3">
+        👋 Need a custom CRM, dashboard, landing page, or business tool? Chat with our lead engineer directly:
+      </p>
+
+      <div class="space-y-1.5">
+        <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20need%20a%20Custom%20CRM%20or%20Dashboard."
+          target="_blank"
+          class="block p-2 rounded-lg bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-xs text-zinc-800 font-medium">
+          💼 Custom CRM / Dashboard
+        </a>
+        <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20want%20a%20High-Converting%20Landing%20Page."
+          target="_blank"
+          class="block p-2 rounded-lg bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-xs text-zinc-800 font-medium">
+          ⚡ Landing Page
+        </a>
+        <a href="https://wa.me/918074215457?text=Hi%20Simplex%20Tech%2C%20I%20have%20a%20custom%20software%20idea."
+          target="_blank"
+          class="block p-2 rounded-lg bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-xs text-zinc-800 font-medium">
+          🚀 Bespoke Business Software
+        </a>
+      </div>
+
+      <div
+        class="mt-3 pt-2 border-t border-zinc-100 flex items-center justify-between text-[10px] text-zinc-400 font-mono">
+        <span>+91 8074215457</span>
+        <span class="text-emerald-600 font-bold">Direct WhatsApp</span>
+      </div>
+    </div>
+
+    <!-- Floating Circular Button -->
+    <div id="whatsapp-toggle-btn" class="floating-whatsapp-btn" title="Chat on WhatsApp (+91 8074215457)">
+      <svg class="w-7 h-7 fill-white" viewBox="0 0 24 24">
+        <path
+          d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+      </svg>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
